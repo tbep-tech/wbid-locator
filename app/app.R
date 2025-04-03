@@ -55,7 +55,7 @@ ui <- page_sidebar(
     card_body(
       HTML("The map includes all WBIDs in Tampa Bay and its watershed:"),
       tags$ul(
-        tags$li(paste("ValAid longitude range:", bbox["xmin"], "to", bbox["xmax"])),
+        tags$li(paste("Valid longitude range:", bbox["xmin"], "to", bbox["xmax"])),
         tags$li(paste("Valid latitude range:", bbox["ymin"], "to", bbox["ymax"]))
       ),
       HTML("Some combinations may be outside of the range.")
