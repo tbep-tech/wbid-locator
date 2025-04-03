@@ -1,6 +1,6 @@
 # wbid-locator
 
-Simple ShinyLive application to identify a WBID from a point location.  All WBIDs are those in Tampa Bay and its watershed.
+Simple ShinyLive application to identify a WBID from a point location.  All WBIDs are those in Tampa Bay and its watershed.  Visit the app at <https://tbep-tech.github.io/wbid-locator/site/>.
 
 ### Deploy
 
