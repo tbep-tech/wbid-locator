@@ -3,6 +3,7 @@ library(sf)
 library(bslib)
 
 data(tbwbid)
+data(tbwbidseg)
 
 # Get the overall bounding box
 get_bbox <- function(polygons) {
@@ -20,10 +21,21 @@ find_containing_polygon <- function(lat, lon, polygons, bbox) {
   # intersect
   int <- st_intersection(polygons, point_sf)
 
+  return(int)
+
+
+}
+
+wbid_txt <- function(int){
+
   if(nrow(int) == 0)
     return("Point is not within any defined region.")
-  else
-    return(paste("Point is within WBID", int$WBID))
+  else{
+    wbid <- int$WBID
+    tbwbidseg <- tbwbidseg[tbwbidseg$WBID == wbid, 'long_name']
+    txt <- paste0("Point is within WBID ", wbid, " (", tbwbidseg, " watershed)")
+    return(txt)
+  }
 
 }
 
@@ -68,7 +80,7 @@ server <- function(input, output, session) {
     find_containing_polygon(input$lat, input$lon, tbwbid, bbox)
   })
 
-  output$result <- renderText({result()})
+  output$result <- renderText({wbid_txt(result())})
 
 }
 
